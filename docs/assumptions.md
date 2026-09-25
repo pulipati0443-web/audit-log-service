@@ -183,9 +183,11 @@ and service-layer design.
 
 ## 11. Scope Boundary
 
-The initial implementation focuses on the requirements explicitly
-defined in Scenario A.
+The prototype implements the requirements covered by Scenarios A, B, and C.
+The assumptions documented here describe the design choices made during
+implementation.
 
-Retention, redaction, bulk export, and the compliance-reporting scenario
-will be addressed as subsequent assignment stages rather than being
-mixed into the initial core implementation.
+Production concerns such as enterprise authentication and authorization,
+regulatory retention configuration, encryption and key management, monitoring,
+backup and recovery, and deployment hardening remain outside the prototype
+scope.
