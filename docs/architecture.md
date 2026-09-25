@@ -247,17 +247,16 @@ integrity violation.
 
 ## 9. Pagination and Querying
 
-Audit-event queries will use database-side filtering rather than loading
-the complete audit history into application memory.
+For the current prototype, audit events are retrieved from the persistence
+layer in deterministic `record_id` order, and the service layer applies the
+requested filters and pagination.
 
-Pagination will use `record_id` as the stable ordering and cursor.
+This keeps the prototype implementation straightforward while preserving
+deterministic ordering. For production scale, filtering and pagination should
+be pushed into parameterized database queries with appropriate indexes to
+avoid loading unnecessary records into application memory.
 
-The API will support a page-size parameter and an optional `after_id`
-cursor. When `after_id` is provided, only records with a greater
-`record_id` will be returned.
-
-This provides deterministic sequential pagination and avoids relying on
-large database offsets for audit-history traversal.
+Pagination uses `record_id` as the stable ordering and cursor.
 
 ---
 
